@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  redis:
+    image: redis:7.0.7
+    container_name: redis
+    privileged: true
+    volumes:
+      - /c/mnt/redis/data:/data
+      - /c/mnt/redis/conf/redis.conf:/usr/local/etc/redis/redis.conf
+      - /c/mnt/redis/logs:/logs
+    command: ['redis-server', '/usr/local/etc/redis/redis.conf']
+    ports:
+      - 6379:6379
+    environment:
+      - TZ="Asia/Shanghai"
